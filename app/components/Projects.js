@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import { fetchProjects } from '../utils/fetchProjects'
 import {urlFor} from '../../sanity'
+import Link from 'next/link'
 
 function Projects() {
   const [projects, setProjects] = useState([])
@@ -57,7 +58,7 @@ function Projects() {
                  <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
                     <h4 className='text-3xl font-semibold text-center'>
                         <span className='underline decoration-[#F7AB0A]/50'>
-                            Project {i+1} of {projects.length}:
+                           <Link href={project.linkToBuild}>Project {i+1} of {projects.length}:</Link>
                         </span>{" "}
                         {project.title}
                     </h4>
