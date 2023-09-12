@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { SocialIcon } from 'react-social-icons';
 import { motion } from 'framer-motion';
 import Link from "next/link";
+import { fetchSocials } from '../utils/fetchSocials';
 
 function Header() {
+  const [socials, setSocials] = useState([])
+  useEffect(()=>{
+    fetchSocials().then((socials)=>{
+      setSocials(socials)
+    })
+  },[])
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center ">
       <motion.div 
@@ -23,16 +30,23 @@ function Header() {
           duration: 1.5
         }}
       >
-        <SocialIcon url='https://www.linkedin.com/in/hhimansh/'
-        fgColor='gray'
-        bgColor='transparent'/>
-        <SocialIcon url='https://www.linkedin.com/in/hhimansh/'
-        fgColor='gray'
-        bgColor='transparent'/>
-        <SocialIcon url='https://github.com/bansalhimanshu0296/'
-        fgColor='gray'
-        bgColor='transparent'/>
-
+        {socials.map((social)=>{
+            if(social.title !== "Discord" ){
+              return(<SocialIcon 
+               key={social._id}
+               url={social.url}
+               fgColor='gray'
+               bgColor='transparent'
+            />)}
+            // else{
+            //   return(<SocialIcon 
+            //     url={social.url}
+            //     key={social._id}
+            //     bgColor='gray'
+            //    />)
+            // }
+        })}
+        
       </motion.div>
       <motion.div className="flex flex-row items-center text-gray-300 cursor-pointer"
         initial={{

@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
+import { fetchProjects } from '../utils/fetchProjects'
+import {urlFor} from '../../sanity'
 
 function Projects() {
-  const projects = [1,2,3,4,5]
+  const [projects, setProjects] = useState([])
+  useEffect(()=>{
+   fetchProjects().then((projects)=>{
+      setProjects(projects)
+   })
+  },[])
   return (
     <motion.div className='h-screen relative flex flex-col overflow-hidden text-left md:flex-row
      max-w-full justify-evenly mx-auto items-center z-0'
@@ -17,12 +24,18 @@ function Projects() {
      }} 
      >
         <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Projects</h3>
-        <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20
-        scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80'>
-            {projects.map((project,i)=>
+        <div 
+         className={projects.length !== 0 ? 'relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80' : 
+         'w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory md:mt-32 mt-12 items-center justify-center'}>
+            {projects.length === 0 && (
+              <div class="animate-spin inline-block w-32 h-32 border-[3px] border-current border-t-transparent text-[#F7AB0A] rounded-full dark:text-[#F7AB0A]" role="status" aria-label="loading">
+              <span class="sr-only">Loading...</span>
+            </div>
+            )}
+            {projects.length !== 0 && projects.map((project,i)=>
             <div className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5
             items-center justify-center p-20 md:p-44 h-screen'>
-                <motion.img src='https://cdn.sanity.io/images/ltuexkre/production/af7ca99b5a796d0698cf9121a4a0795b5022b6be-666x375.png'
+                <motion.img src={urlFor(project?.image).url()}
                  alt=''
                  initial={{
                     y:-300,
@@ -38,15 +51,16 @@ function Projects() {
                  viewport={{
                     once: true
                  }}
+                 className='w-[35vw]'
                 />
                  <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
-                    <h4 className='text-4xl font-semibold text-center'>
+                    <h4 className='text-3xl font-semibold text-center'>
                         <span className='underline decoration-[#F7AB0A]/50'>
-                            Case Study {i+1} of {projects.length}:
+                            Project {i+1} of {projects.length}:
                         </span>{" "}
-                        UPS Clone
+                        {project.title}
                     </h4>
-                    <p className='text-lg text-center md:text-left'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent felis risus, semper sit amet fermentum sed, tincidunt ut ex. Mauris arcu est, efficitur non lectus nec, tempus fermentum est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis pellentesque diam id facilisis lacinia. Pellentesque at turpis vitae urna tincidunt egestas. Nunc maximus tincidunt urna non fringilla. Sed non velit enim. Proin at nulla at metus pretium bibendum et quis nisi. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed vitae lacinia mauris, a pretium enim. Vivamus volutpat gravida metus, sed consectetur ante ultricies in. Cras sagittis dolor nisl, non molestie quam pretium non. Ut ac blandit enim. Ut non neque vitae ex facilisis tincidunt at fermentum nulla.</p>
+                    <p className='text-lg text-center md:text-left'>{project.summary}</p>
                  </div>
             </div>)}
 
