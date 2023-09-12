@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {motion} from 'framer-motion'
 import Skill from './Skill'
-import { fetchSkills } from '../utils/fetchskills'
+import { fetchSkills } from '../utils/fetchSkills'
 
 
 export default function Skills() {
