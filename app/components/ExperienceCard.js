@@ -29,8 +29,8 @@ function ExperienceCard({experience}) {
             <h4 className='text-xl font-light'>{experience.jobTitle}</h4>
             <p className='font-bold text-lg mt-1'>{experience.organization}</p>
             <div className='flex space-x-2 my-2 flex-wrap'>
-                {experience.technologies.map((technology)=>(
-                    <img src={urlFor(technology.image).url()} className='h-10 w-10 rounded-full'/>
+                {experience.technologies.map((technology, id)=>(
+                    <img src={urlFor(technology.image).url()} className='h-10 w-10 rounded-full' key={id}/>
                 ))}
             </div>
             <p className='uppercase py-5 text-gray-300'>
