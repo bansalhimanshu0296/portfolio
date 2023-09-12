@@ -57,9 +57,8 @@ function Projects() {
                 />
                  <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
                     <h4 className='text-3xl font-semibold text-center'>
-                        <span className='underline decoration-[#F7AB0A]/50'>
-                           <Link href={project.linkToBuild}>Project {i+1} of {projects.length}:</Link>
-                        </span>{" "}
+                        <Link href={project.linkToBuild} className='underline decoration-[#F7AB0A]/50'>Project {i+1} of {projects.length}:</Link>
+                        {" "}
                         {project.title}
                     </h4>
                     <p className='text-lg text-center md:text-left'>{project.summary}</p>
