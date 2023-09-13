@@ -44,6 +44,9 @@ function Hero() {
                 <Link href="#about">
                     <button className='heroButton'>About</button>
                 </Link>
+                <Link href="#education">
+                    <button className='heroButton'>Education</button>
+                </Link>
                 <Link href="#experience">
                     <button className='heroButton'>Experience</button>
                 </Link>

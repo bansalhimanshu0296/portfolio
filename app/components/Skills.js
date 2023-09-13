@@ -38,15 +38,24 @@ export default function Skills() {
               <span className="sr-only">Loading...</span>
             </div>
             )}
-            {skills.length !==0 && skills.map((skill)=>(
+            {skills.length !==0 && skills.slice(0, skills.length/2).map((skill)=>(
               <Skill 
                key={skill._id}
                title={skill.title}
                progress={skill.progress}
                image={skill.image}
+               directionLeft = {true}
               />
             ))}
-            
+            {skills.length !==0 && skills.slice(skills.length/2, skills.length).map((skill)=>(
+              <Skill 
+               key={skill._id}
+               title={skill.title}
+               progress={skill.progress}
+               image={skill.image}
+               directionLeft = {false}
+              />
+            ))}
         </div>
     </motion.div>
   )

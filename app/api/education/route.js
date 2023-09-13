@@ -3,15 +3,14 @@ import { groq } from 'next-sanity'
 import { sanityClient } from '../../../sanity'
 
 const query = groq`
-*[_type == "project"] | order(_updatedAt desc){
-    ...,
-    technologies[]->
-}
+    *[_type == "education"] | order(dateStarted desc){
+        ...,
+    }
 `
 
 export async function GET(){
-    const projects = await sanityClient.fetch({"query": query,config:{
+    const education = await sanityClient.fetch({"query": query,config:{
         cache: 'no-store'
     }})
-    return NextResponse.json({ projects })
+    return NextResponse.json({ education })
 }

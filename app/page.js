@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
+import Education from './components/Education'
 
 export default function Home() {
   
@@ -19,6 +20,9 @@ export default function Home() {
       </section>
       <section id='about' className="snap-center pt-[2vh]"> 
         <About />
+      </section>
+      <section id='education' className="snap-center pt-[2vh]">
+        <Education/>
       </section>
       <section id='experience' className="snap-center pt-[2vh]">
         <Experience/>
