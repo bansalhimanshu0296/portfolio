@@ -8,7 +8,7 @@ function About() {
    useEffect(()=>{
      fetchPageInfo().then((pageInfo)=>{
            setPageInfo(pageInfo)
-       })
+      })
    },[])
   return (
     <motion.div className='flex flex-col relative h-screen text-center md:text-left md:flex-row 

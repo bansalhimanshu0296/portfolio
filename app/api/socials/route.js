@@ -7,6 +7,8 @@ const query = groq`
 `
 
 export async function GET(){
-    const socials = await sanityClient.fetch(query)
+    const socials = await sanityClient.fetch({"query": query,config:{
+        cache: 'no-store'
+    }})
     return NextResponse.json({ socials })
 }

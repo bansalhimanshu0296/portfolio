@@ -10,6 +10,8 @@ const query = groq`
 `
 
 export async function GET(){
-    const projects = await sanityClient.fetch(query)
+    const projects = await sanityClient.fetch({"query": query,config:{
+        cache: 'no-store'
+    }})
     return NextResponse.json({ projects })
 }

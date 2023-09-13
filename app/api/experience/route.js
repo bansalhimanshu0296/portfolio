@@ -10,6 +10,8 @@ const query = groq`
 `
 
 export async function GET(){
-    const experience = await sanityClient.fetch(query)
+    const experience = await sanityClient.fetch({"query": query,config:{
+        cache: 'reload'
+    }})
     return NextResponse.json({ experience })
 }

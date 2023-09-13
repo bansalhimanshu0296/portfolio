@@ -9,10 +9,9 @@ function Hero() {
   const [pageInfo, setPageInfo] = useState({})
   useEffect(()=>{
     fetchPageInfo().then((pageInfo)=>{
-          console.log(pageInfo)
-          setPageInfo(pageInfo)
+        setPageInfo(pageInfo)
       })
-    },[])
+   },[])
   
   const [text] = useTypewriter({
     words:[

@@ -7,6 +7,8 @@ const query = groq`
 `
 
 export async function GET(){
-    const pageInfo = await sanityClient.fetch(query)
+    const pageInfo = await sanityClient.fetch({"query": query,config:{
+        cache: 'no-store'
+    }})
     return NextResponse.json({ pageInfo })
 }

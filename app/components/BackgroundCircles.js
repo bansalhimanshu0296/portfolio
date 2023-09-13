@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 function BackgroundCircles() {
   return (
     <motion.div className='relative flex justify-center items-center'
-      intial = {{
+      initial = {{
         opacity: 0
       }}
       animate = {{
