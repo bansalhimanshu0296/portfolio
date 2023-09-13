@@ -11,7 +11,7 @@ const query = groq`
 
 export async function GET(){
     const projects = await sanityClient.fetch({"query": query,config:{
-        cache: 'no-store'
+        cache: 'no-cache'
     }})
     return NextResponse.json({ projects })
 }
