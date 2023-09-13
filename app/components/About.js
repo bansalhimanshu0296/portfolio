@@ -7,6 +7,7 @@ function About() {
    const [pageInfo, setPageInfo] = useState({})
    useEffect(()=>{
      fetchPageInfo().then((pageInfo)=>{
+           
            setPageInfo(pageInfo)
       })
    },[])

@@ -3,7 +3,7 @@ import { groq } from 'next-sanity'
 import { sanityClient } from '../../../sanity'
 
 const query = groq`
-    *[_type == "skill"] | order(progress desc)
+    *[_type == "skill" && title != "React Native"] |order(progress desc)
 `
 
 export async function GET(){

@@ -20,7 +20,7 @@ function ContactMe() {
         <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>
             Contact
         </h3>
-        <div className='flex flex-col space-y-10 top-48 absolute'>
+        <div className='flex flex-col space-y-10 top-40 absolute w-[90%]'>
             <h4 className='text-4xl font-semibold text-center'>
                 I have just got what you need.{" "}
                 <span className='decoration-[#F7AB0A]/50 underline'>Lets Talk</span>
@@ -41,9 +41,9 @@ function ContactMe() {
             </div>
         
             <form className='flex flex-col space-y-2 w-fit mx-auto' onSubmit={handleSubmit(onSubmit)}>
-                <div className='flex space-x-2'>
-                    <input className='contactInput' type="text" placeholder='Name' {...register('name')}/> 
-                    <input className='contactInput' type="text" placeholder='Email' {...register('email')}/>
+                <div className='flex md:space-x-2 flex-wrap space-y-2 md:space-y-0'>
+                    <input className='contactInput w-[100%] md:w-fit' type="text" placeholder='Name' {...register('name')}/> 
+                    <input className='contactInput w-[100%] md:w-fit' type="text" placeholder='Email' {...register('email')}/>
                 </div>
                 <input className='contactInput' type="text" placeholder='Subject' {...register('subject')}/>
                 <textarea className='contactInput' placeholder='Message' {...register('message')}/>

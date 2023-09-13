@@ -26,7 +26,7 @@ function Projects() {
      >
         <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Projects</h3>
         <div 
-         className={projects.length !== 0 ? 'relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80' : 
+         className={projects.length !== 0 ? 'relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]/80 top-16' : 
          'w-full flex space-x-5 overflow-x-scroll p-10 snap-x snap-mandatory md:mt-32 mt-12 items-center justify-center'}>
             {projects.length === 0 && (
               <div classNam="animate-spin inline-block w-32 h-32 border-[3px] border-current border-t-transparent text-[#F7AB0A] rounded-full dark:text-[#F7AB0A]" role="status" aria-label="loading">
@@ -57,11 +57,16 @@ function Projects() {
                 />
                  <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
                     <h4 className='md:text-3xl font-semibold text-center text-xl'>
-                        <Link href={project.linkToBuild} className='underline decoration-[#F7AB0A]/50'>Project {i+1} of {projects.length}:</Link>
+                        <Link href={project.linkToBuild} target="_blank" className='underline decoration-[#F7AB0A]/50'>Project {i+1} of {projects.length}:</Link>
                         {" "}
                         {project.title}
                     </h4>
-                    <p className='text-md md:text-lg text-center md:text-left h-24 overflow-y-scroll'>{project.summary}</p>
+                    <div className='flex items-center space-x-2 justify-center flex-wrap'>
+                        {project?.technologies.map(technology =>(
+                              <img key={technology._id} src={urlFor(technology.image).url()} alt="" className='h-10 w-10'/>
+                        ))}
+                    </div>
+                    <p className='text-md md:text-lg text-center md:text-left h-48 overflow-y-scroll scrollbar-none'>{project.summary}</p>
                  </div>
             </div>)}
 

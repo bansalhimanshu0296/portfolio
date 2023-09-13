@@ -22,7 +22,7 @@ export default {
     {
       name: 'backgroundInformation',
       title: 'BackgroundInformation',
-      type: 'string',
+      type: 'text',
     },
     {
       name: 'profilePic',

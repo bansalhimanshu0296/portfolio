@@ -63,7 +63,7 @@ function Header() {
         transition={{
           duration: 1.5
       }}>
-        <Link href={process.env.NEXT_PUBLIC_BASE_URL+"/Himanshu, FNU.pdf"} target="_blank">
+        <Link href="https://drive.google.com/file/d/1TmJNdinPUIopz8vw3XigFQKnQaMpaphf/view?usp=share_link" target="_blank">
           <p className="uppercase inline-flex text-sm text-gray-400">Resume</p>
         </Link>
         <SocialIcon network='email'
