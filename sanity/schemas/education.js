@@ -32,10 +32,6 @@ export default {
           title: 'DateEnded',
           type: 'date'
       },{
-          name: 'isCurrentlyAttending',
-          title: 'IsCurrentlyAttending',
-          type: 'boolean'
-      },{
         name: 'cgpa',
         title: 'CGPA',
         type: 'string'
